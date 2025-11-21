@@ -17,41 +17,42 @@ h1 {
 /* ==========================
   PLATEAU DE JEU
    ========================== */
+/* Plateau : Desktop 4x4 */
 #game-board {
   display: grid;
   gap: 6px;
-  /* espace entre les cartes */
   width: 95vw;
   max-width: 480px;
   margin: 20px auto;
-
-  /* Desktop : 4 colonnes */
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(4, 1fr);
 }
 
-/* Mobile : moins de 400px → 2 colonnes */
+/* Mobile : moins de 400px → 3 colonnes et plateau plus petit */
 @media (max-width: 400px) {
   #game-board {
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    width: 90vw;
+    /* réduit légèrement la largeur du plateau */
+    gap: 3px;
+    /* réduit l’espacement entre les cartes */
   }
 }
 
-/* ==========================
-  CARTES
-   ========================== */
+/* Cartes */
 .card {
   background-color: #ccc;
-  border-radius: 10px;
+  border-radius: 8px;
   cursor: pointer;
   position: relative;
   overflow: hidden;
   width: 100%;
   aspect-ratio: 1 / 1;
-  /* cartes carrées */
+  /* carrée */
   transition: transform 0.15s;
 }
+
 
 .card:hover:not(.done) {
   transform: scale(1.05);
@@ -62,7 +63,7 @@ h1 {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 10px;
+  border-radius: 8px;
   position: absolute;
   top: 0;
   left: 0;
@@ -122,7 +123,7 @@ MESSAGE DE VICTOIRE
   padding: 8px 16px;
   margin-top: 10px;
   cursor: pointer;
-  border-radius: 5px;
+  border-radius: 10px;
   border: none;
   background-color: #8fda8f;
   transition: background-color 0.3s;
